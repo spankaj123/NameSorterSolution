@@ -1,0 +1,48 @@
+# .NET build folders
+**/bin/
+**/obj/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vsconfig
+
+# Build artifacts
+*.pdb
+*.cache
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.ipdb
+*.tlog
+*.log
+[Dd]ebug/
+[Rr]elease/
+
+# NuGet
+*.nupkg
+packages/
+*.nuget.props
+*.nuget.targets
+
+# Test results
+TestResults/
+coverage/
+
+# IDE-specific
+.idea/
+*.swp
+*~
+.DS_Store
+
+# App settings (sensitive local config)
+appsettings.Development.json
+appsettings.Local.json
+
+# Ignore only if these are generated, otherwise allow them
+# !unsorted-names-list.txt
+# !sorted-names-list.txt
