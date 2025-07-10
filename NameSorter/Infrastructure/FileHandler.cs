@@ -1,4 +1,4 @@
-﻿// Handles file input/output operations for name
+﻿// Handles file input/output operations for names
 using Microsoft.Extensions.Logging;
 using NameSorter.Core.Exceptions;
 using NameSorter.Core.Interfaces;
