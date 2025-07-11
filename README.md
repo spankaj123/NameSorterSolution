@@ -83,14 +83,6 @@ The application sorts names from `unsorted-names-list.txt` and outputs to `sorte
    cd NameSorterSolution
    dotnet test NameSorter.Tests/NameSorter.Tests.csproj --configuration Release
    ```
-2. **Expected Output**:
-   - 8 tests pass (3 for `FileHandler`, 2 for `NameSorterService`, 3 for `NameParser`).
-   - Example:
-
-     ```
-     Total tests: 8
-     Passed: 8
-     ```
 
 ## GitHub Actions Workflow
 
