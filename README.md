@@ -39,26 +39,6 @@ This repository contains a .NET 9.0 console application for sorting names from a
    dotnet --list-sdks
    ```
 
-   Ensure `9.0.xxx` is listed. If not, install from the link above.
-
-3. **Ensure Input File**:
-
-   - Confirm `unsorted-names-list.txt` is in `NameSorter/` with \~300 names.
-   - Verify `NameSorter/NameSorter.csproj` includes:
-
-     ```xml
-     <ItemGroup>
-       <None Update="unsorted-names-list.txt">
-         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-       </None>
-     </ItemGroup>
-     ```
-
-4. **GitHub Actions Permissions**:
-
-   - Go to `https://github.com/spankaj123/NameSorterSolution` &gt; **Settings** &gt; **Actions** &gt; **General**.
-   - Select **Read and write permissions** under **Workflow permissions**.
-   - Click **Save** to allow pushing `sorted-names-list.txt`.
 
 ## Running the Application Locally
 
@@ -78,25 +58,10 @@ The application sorts names from `unsorted-names-list.txt` and outputs to `sorte
 
    - **Input**: Reads `NameSorter/unsorted-names-list.txt`.
    - **Output**: Writes `NameSorter/sorted-names-list.txt` and prints sorted names to console.
-   - **Expected Logs**:
-
-     ```
-     info: NameSorter.Program[0]
-           Application started.
-     info: NameSorter.Infrastructure.FileHandler[0]
-           Loaded 300 names from .../NameSorter/unsorted-names-list.txt
-     info: NameSorter.Core.Services.NameSorterService[0]
-           Sort triggered for name list.
-     Adonis Julius Archer
-     Marin Alvarez
-     ...
-     info: NameSorter.Program[0]
-           Sort completed successfully. Names written to .../NameSorter/sorted-names-list.txt
-     ```
 
 3. **Verify Output File**:
 
-   - Check `NameSorter/sorted-names-list.txt` for \~300 sorted names (e.g., starting with "Adonis Julius Archer").
+   - Check `NameSorter/sorted-names-list.txt` for sorted names.
    - Run:
 
      ```bash
@@ -146,7 +111,7 @@ The workflow (`BuildandExecute.yml`) automates building, testing, running the ap
   7. **Calculate Test Metrics**: Logs total tests, passed tests, and pass percentage.
   8. **Commit**: Commits and pushes `NameSorter/sorted-names-list.txt` to the repository.
 - **Verify**:
-  - Go to **Actions** tab &gt; Select ìBuild and Execute Name Sorterî.
+  - Go to **Actions** tab &gt; Select ‚ÄúBuild and Execute Name Sorter‚Äù.
   - Check logs for build, run, and test success.
   - Confirm `NameSorter/sorted-names-list.txt` in the repository.
 
