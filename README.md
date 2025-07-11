@@ -21,8 +21,7 @@ This repository contains a .NET 9.0 console application for sorting names from a
 
 - **.NET 9.0 SDK**: Install from dotnet.microsoft.com (x64 SDK).
 - **Git**: For cloning the repository.
-- **Visual Studio 2022** or **VS Code** (optional, for development).
-- **GitHub Repository**: Ensure write permissions for GitHub Actions (see Setup).
+- **Visual Studio 2022** (optional, for development).
 
 ## Setup
 
