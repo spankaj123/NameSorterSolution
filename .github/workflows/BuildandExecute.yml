@@ -25,11 +25,24 @@ jobs:
         run: dotnet build NameSorterSolution.sln --no-restore --configuration Release
 
       - name: Run NameSorter
-        run: dotnet run --project NameSorter/NameSorter.csproj --configuration Release NameSorter/unsorted-names-list.txt
+        working-directory: NameSorter
+        run: dotnet run --project NameSorter.csproj --configuration Release ./unsorted-names-list.txt
 
       - name: Run Tests
         run: dotnet test NameSorter.Tests/NameSorter.Tests.csproj --no-build --configuration Release --verbosity normal
 
-      - name: Calculate test metrics
+      - name: Calculate test metrics and display their results
         run: |
-          TEST_RESULT=$(dotnet test NameSorter.Tests/)
+          TEST_RESULT=$(dotnet test NameSorter.Tests/NameSorter.Tests.csproj --no-build --configuration Release --verbosity normal | grep -oP 'Total tests: \K\d+')
+          PASSED_TESTS=$(dotnet test NameSorter.Tests/NameSorter.Tests.csproj --no-build --configuration Release --verbosity normal | grep -oP 'Passed: \K\d+')
+          echo "Total Tests: $TEST_RESULT"
+          echo "Passed Tests: $PASSED_TESTS"
+          echo "Percentage of Tests Passed: $(($PASSED_TESTS * 100 / $TEST_RESULT))%"
+
+      - name: Commit sorted-names-list.txt
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add NameSorter/sorted-names-list.txt
+          git commit -m "Add sorted-names-list.txt from CI run" || echo "No changes to commit"
+          git push
