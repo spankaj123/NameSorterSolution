@@ -31,7 +31,7 @@ jobs:
       - name: Run Tests
         run: dotnet test NameSorter.Tests/NameSorter.Tests.csproj --no-build --configuration Release --verbosity normal
 
-      - name: Calculate test metrics
+      - name: Calculate test metrics and display their results
         run: |
           TEST_RESULT=$(dotnet test NameSorter.Tests/NameSorter.Tests.csproj --no-build --configuration Release --verbosity normal | grep -oP 'Total tests: \K\d+')
           PASSED_TESTS=$(dotnet test NameSorter.Tests/NameSorter.Tests.csproj --no-build --configuration Release --verbosity normal | grep -oP 'Passed: \K\d+')
