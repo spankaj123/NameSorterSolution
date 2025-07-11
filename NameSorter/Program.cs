@@ -31,9 +31,10 @@ namespace NameSorter
                     throw new NameSorterException("Please provide the path to the input file. Usage: name-sorter <input-file-path>");
                 }
 
-                // Resolve input and output file paths
-                string inputFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, args[0]);
-                string outputFilePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../sorted-names-list.txt"));
+                // Resolve input file path relative to current working directory
+                string inputFilePath = Path.GetFullPath(args[0], Environment.CurrentDirectory);
+                // Output to the same directory as input file
+                string outputFilePath = Path.Combine(Path.GetDirectoryName(inputFilePath) ?? throw new NameSorterException("Unable to determine input file directory."), "sorted-names-list.txt");
 
                 // Initialize dependencies with logging
                 IFileHandler fileHandler = new FileHandler(loggerFactory.CreateLogger<FileHandler>());
